@@ -17,7 +17,7 @@ docker run --rm \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.2 \
+  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.3 \
     <bin> <flags> /input.pcap
 ```
 
@@ -39,8 +39,8 @@ docker run --rm \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.2 \
-    hcxpcapngtool /input.pcap -o output.hash
+  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.3 \
+    hcxpcapngtool -o output.hash /input.pcap
 ```
 
 Genrated hashfile will be in `$(pwd)/output.hash`.
@@ -49,6 +49,19 @@ Genrated hashfile will be in `$(pwd)/output.hash`.
 #### [`hcxhashtool`][1]
 
 > Tool to filter hashes from HC22000 files based on user input.
+
+```bash
+export INFILE=/some/absolute/path/to/hash.file
+
+docker run --rm \
+  -it \
+  -v $(pwd):/workdir \
+  -v ${INFILE}:/input.hash \
+  --platform linux/amd64 \
+  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.3 \
+    hcxhashtool -i /input.hash
+```
+
 
 #### [`hcxpsktool`][1]
 
