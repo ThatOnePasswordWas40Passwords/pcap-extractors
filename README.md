@@ -11,7 +11,8 @@ For supported `<bin>s`, refer to [currently packaged](#currently-packaged) secti
 
 ```bash
 export IMG=ghcr.io/thatonepasswordwas40passwords/pcap-extractor
-export VERS=0.1.0
+export VERS=0.1.2
+export INFILE=/some/absolute/path/to/input.pcap
 
 docker run --rm \
   -it \
@@ -32,12 +33,14 @@ docker run --rm \
 > Tool to convert raw capture files to Hashcat and JtR readable formats.
 
 ```bash
+export INFILE=/some/absolute/path/to/input.pcap
+
 docker run --rm \
   -it \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ${IMG}:${VERS} hcxpcapngtool input.pcap -o output.hash
+  ${IMG}:${VERS} hcxpcapngtool /input.pcap -o output.hash
 ```
 
 Genrated hashfile will be in `$(pwd)/output.hash`.
