@@ -36,3 +36,6 @@ RUN apt-get remove -yq \
   zlib1g-dev \
   pkg-config \
   ccache
+
+
+WORKDIR /workdir

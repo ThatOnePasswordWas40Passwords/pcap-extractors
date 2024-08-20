@@ -5,13 +5,20 @@
 
 ## Running
 
+See: Latest [published container for more information](https://github.com/orgs/ThatOnePasswordWas40Passwords/packages?repo_name=pcap-extractors).
+
 For supported `<bin>s`, refer to [currently packaged](#currently-packaged) section.
 
 ```bash
+export IMG=ghcr.io/thatonepasswordwas40passwords/pcap-extractor
+export VERS=0.1.0
+
 docker run --rm \
-    -it \
-    --platform linux/amd64 \
-    ghcr.io/thatonepasswordwas40passwords/pcap-extractor <bin> <flags>
+  -it \
+  -v $(pwd):/workdir \
+  -v ${INFILE}:/input.pcap \
+  --platform linux/amd64 \
+  ${IMG}:${VERS} <bin> <flags> input.pcap
 ```
 
 ## Currently packaged
@@ -23,6 +30,18 @@ docker run --rm \
 #### [`hcxpcapngtool`][1]
 
 > Tool to convert raw capture files to Hashcat and JtR readable formats.
+
+```bash
+docker run --rm \
+  -it \
+  -v $(pwd):/workdir \
+  -v ${INFILE}:/input.pcap \
+  --platform linux/amd64 \
+  ${IMG}:${VERS} hcxpcapngtool input.pcap -o output.hash
+```
+
+Genrated hashfile will be in `$(pwd)/output.hash`.
+
 
 #### [`hcxhashtool`][1]
 
