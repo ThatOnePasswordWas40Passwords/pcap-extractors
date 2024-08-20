@@ -19,7 +19,7 @@ docker run --rm \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ${IMG}:${VERS} <bin> <flags> input.pcap
+  ${IMG}:${VERS} <bin> <flags> /input.pcap
 ```
 
 ## Currently packaged
