@@ -10,8 +10,6 @@ See: Latest [published container for more information](https://github.com/orgs/T
 For supported `<bin>s`, refer to [currently packaged](#currently-packaged) section.
 
 ```bash
-export IMG=ghcr.io/thatonepasswordwas40passwords/pcap-extractor
-export VERS=0.1.2
 export INFILE=/some/absolute/path/to/input.pcap
 
 docker run --rm \
@@ -19,7 +17,8 @@ docker run --rm \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ${IMG}:${VERS} <bin> <flags> /input.pcap
+  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.2 \
+    <bin> <flags> /input.pcap
 ```
 
 ## Currently packaged
@@ -40,7 +39,8 @@ docker run --rm \
   -v $(pwd):/workdir \
   -v ${INFILE}:/input.pcap \
   --platform linux/amd64 \
-  ${IMG}:${VERS} hcxpcapngtool /input.pcap -o output.hash
+  ghcr.io/thatonepasswordwas40passwords/pcap-extractor:0.1.2 \
+    hcxpcapngtool /input.pcap -o output.hash
 ```
 
 Genrated hashfile will be in `$(pwd)/output.hash`.
